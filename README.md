@@ -8,4 +8,7 @@ A Minecraft plugin to manage donjons on PeaceAndCube
 - ``/pacdonjon removestep <donjon> <step>`` to remove a step in a donjon
 - ``/pacdonjon set <target> <donjon> <step>`` to set the current step of a target in a donjon
 - ``/pacdonjon set <target> <donjon>`` to remove the currently set step of a target in a donjon
+- ``/pacdonjon info <donjon> <step>`` to get information about a donjon step
+- ``/pacdonjon list`` to get a list of the donjons
+- ``/pacdonjon list <donjon>`` to get a list of the steps in a donjon
 - ``/donjon <donjon>`` to teleport to your current step in a donjon

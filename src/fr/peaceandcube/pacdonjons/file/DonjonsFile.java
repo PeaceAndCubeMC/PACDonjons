@@ -80,6 +80,19 @@ public class DonjonsFile {
 		return new ArrayList<String>();
 	}
 	
+	public static List<String> getStepInfo(String donjon, String step) {
+		ConfigurationSection section = config.getConfigurationSection(donjon).getConfigurationSection("steps").getConfigurationSection(step);
+		Set<String> infoKeys = section.getKeys(false);
+		if (!infoKeys.isEmpty()) {
+			List<String> infos = new ArrayList<String>();
+			for (String info : infoKeys) {
+				infos.add(section.getString(info));
+			}
+			return infos;
+		}
+		return new ArrayList<String>();
+	}
+	
 	public static void add(String name, String author) {
 		ConfigurationSection section = config.createSection(name);
 		section.set("author", author);

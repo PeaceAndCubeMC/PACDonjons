@@ -17,7 +17,7 @@ import fr.peaceandcube.pacdonjons.file.PlayerDataFile;
 import fr.peaceandcube.pacpi.player.PlayerSuggestionProviders;
 
 public class PacDonjonCommand implements CommandExecutor, TabExecutor {
-	private static final List<String> OPERATIONS = ImmutableList.of("add", "remove", "addstep", "removestep", "set");
+	private static final List<String> OPERATIONS = ImmutableList.of("add", "remove", "addstep", "removestep", "set", "info", "list");
 	
 	@Override
 	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
@@ -96,6 +96,41 @@ public class PacDonjonCommand implements CommandExecutor, TabExecutor {
 						}
 					}
 					return true;
+				case "info":
+					if (args.length == 3) {
+						String donjon = args[1];
+						String step = args[2];
+						if (DonjonsFile.getDonjons("").contains(donjon)) {
+							if (DonjonsFile.getSteps(donjon, "").contains(step)) {
+								List<String> infos = DonjonsFile.getStepInfo(donjon, step);
+								sender.sendMessage(String.format(DonjonMessages.STEP_INFO, step, donjon, infos));
+							} else {
+								sender.sendMessage(DonjonMessages.STEP_NOT_FOUND);
+							}
+						} else {
+							sender.sendMessage(DonjonMessages.DONJON_NOT_FOUND);
+						}
+					}
+					return true;
+				case "list":
+					if (args.length == 1) {
+						List<String> donjons = DonjonsFile.getDonjons("");
+						sender.sendMessage(String.format(DonjonMessages.DONJON_LIST, donjons));
+						return true;
+					} else if (args.length == 2) {
+						String donjon = args[1];
+						if (DonjonsFile.getDonjons("").contains(donjon)) {
+							List<String> steps = DonjonsFile.getSteps(donjon, "");
+							if (!steps.isEmpty()) {
+								sender.sendMessage(String.format(DonjonMessages.STEP_LIST, donjon, steps));
+							} else {
+								sender.sendMessage(DonjonMessages.NO_DONJON_STEP);
+							}
+						} else {
+							sender.sendMessage(DonjonMessages.DONJON_NOT_FOUND);
+						}
+						return true;
+					}
 				}
 			}
 		}
@@ -121,6 +156,8 @@ public class PacDonjonCommand implements CommandExecutor, TabExecutor {
 				case "remove":
 				case "addstep":
 				case "removestep":
+				case "info":
+				case "list":
 					return DonjonsFile.getDonjons(args[1]);
 				case "set":
 					return PlayerSuggestionProviders.getOnlinePlayers(args[1]);
@@ -132,6 +169,7 @@ public class PacDonjonCommand implements CommandExecutor, TabExecutor {
 				case "add":
 					return PlayerSuggestionProviders.getOnlinePlayers(args[2]);
 				case "removestep":
+				case "info":
 					return DonjonsFile.getSteps(args[1], args[2]);
 				case "set":
 					return DonjonsFile.getDonjons(args[2]);
