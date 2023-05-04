@@ -1,29 +1,27 @@
 main: fr.peaceandcube.pacdonjons.PACDonjons
 name: PACDonjons
-description: A Minecraft plugin to manage donjons on PeaceAndCube
-version: 1.1.0
-author: Yanis48
+description: A plugin to manage donjons on PeaceAndCube
+version: ${version}
+author: YanisBft
 website: https://github.com/PeaceAndCubeMC/PACDonjons
-api-version: 1.13
-
-depend: [pAcPI]
+api-version: 1.19
 
 commands:
   pacdonjon:
     description: Allows you to manage donjons
-    permission: pacdonjons.pacdonjon
+    permission: peaceandcube.pacdonjon
     permission-message: §cYou do not have the permission to use this command.
     usage: "§eUsage:\n  /pacdonjon add <name> <author>\n  /pacdonjon remove <donjon>\n  /pacdonjon addstep <donjon> <name>\n  /pacdonjon removestep <donjon> <step>\n  /pacdonjon set <target> <donjon> [<step>]\n  /pacdonjon info <donjon> <step>\n  /pacdonjon list [<donjon>]"
   donjon:
     description: Allows you to teleport to a donjon
-    permission: pacdonjons.donjon
+    permission: peaceandcube.donjon
     permission-message: §cYou do not have the permission to use this command.
     usage: "§eUsage: §r/donjon <donjon>"
 
 permissions:
-  pacdonjons.pacdonjon:
+  peaceandcube.pacdonjon:
     description: Allows you to manage donjons
     default: op
-  pacdonjons.donjon:
+  peaceandcube.donjon:
     description: Allows you to teleport to a donjon
     default: true
