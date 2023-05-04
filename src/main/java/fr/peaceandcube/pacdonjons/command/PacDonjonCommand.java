@@ -18,7 +18,7 @@ import java.util.List;
 
 public class PacDonjonCommand implements CommandExecutor, TabExecutor {
 	private static final String PERM_PACDONJON = "peaceandcube.pacdonjon";
-	private static final List<String> OPERATIONS = List.of("add", "addstep", "info", "list", "remove", "removestep", "set");
+	private static final List<String> OPERATIONS = List.of("add", "addstep", "info", "list", "reload", "remove", "removestep", "set");
 
 	@Override
 	public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
@@ -129,6 +129,12 @@ public class PacDonjonCommand implements CommandExecutor, TabExecutor {
 						} else {
 							sender.sendMessage(Messages.DONJON_NOT_FOUND);
 						}
+						return true;
+					}
+				case "reload":
+					if (args.length == 1) {
+						PACDonjons.reload();
+						sender.sendMessage(Messages.RELOAD_SUCCESS);
 						return true;
 					}
 				}

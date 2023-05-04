@@ -9,6 +9,8 @@ public class Messages {
 	public static final TextComponent STEP_NOT_FOUND = error("L'étape du donjon n'a pas été trouvée.");
 	public static final TextComponent NO_DONJON_STEP = error("Le donjon n'a aucune étape.");
 
+	public static final TextComponent RELOAD_SUCCESS = Component.text("PACDonjons a été rechargé avec succès", TextColor.color(0x55FF55));
+
 	public static final String DONJON_ADDED = "Le donjon %s a été ajouté.";
 	public static final String DONJON_REMOVED = "Le donjon %s a été supprimé.";
 	public static final String STEP_ADDED = "L'étape %s a été ajoutée au donjon %s.";

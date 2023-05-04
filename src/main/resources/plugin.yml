@@ -11,7 +11,7 @@ commands:
     description: Allows you to manage donjons
     permission: peaceandcube.pacdonjon
     permission-message: §cYou do not have the permission to use this command.
-    usage: "§eUsage:\n  /pacdonjon add <name> <author>\n  /pacdonjon remove <donjon>\n  /pacdonjon addstep <donjon> <name>\n  /pacdonjon removestep <donjon> <step>\n  /pacdonjon set <target> <donjon> [<step>]\n  /pacdonjon info <donjon> <step>\n  /pacdonjon list [<donjon>]"
+    usage: "§eUsage: §r /pacdonjon <add|addstep|info|list|reload|remove|removestep|set>"
   donjon:
     description: Allows you to teleport to a donjon
     permission: peaceandcube.donjon

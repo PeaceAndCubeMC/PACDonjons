@@ -11,4 +11,5 @@ A Minecraft plugin to manage donjons on PeaceAndCube
 - ``/pacdonjon info <donjon> <step>`` to get information about a donjon step
 - ``/pacdonjon list`` to get a list of the donjons
 - ``/pacdonjon list <donjon>`` to get a list of the steps in a donjon
+- ``/pacdonjon reload`` to reload the plugin
 - ``/donjon <donjon>`` to teleport to your current step in a donjon

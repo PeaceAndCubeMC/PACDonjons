@@ -18,4 +18,9 @@ public class PACDonjons extends JavaPlugin {
 		donjonsFile = new DonjonsFile("donjons.yml", this);
 		playerDataFile = new PlayerDataFile("playerdata.yml", this);
 	}
+
+	public static void reload() {
+		donjonsFile.reload();
+		playerDataFile.reload();
+	}
 }
