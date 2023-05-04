@@ -4,6 +4,8 @@ import fr.peaceandcube.pacdonjons.PACDonjons;
 import fr.peaceandcube.pacdonjons.util.Messages;
 import fr.peaceandcube.pacdonjons.util.SuggestionProviders;
 import net.kyori.adventure.text.Component;
+import net.kyori.adventure.text.event.ClickEvent;
+import net.kyori.adventure.text.event.HoverEvent;
 import net.kyori.adventure.text.format.TextColor;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
@@ -103,7 +105,12 @@ public class PacDonjonCommand implements CommandExecutor, TabExecutor {
 						if (PACDonjons.donjonsFile.getDonjons("").contains(donjon)) {
 							if (PACDonjons.donjonsFile.getSteps(donjon, "").contains(step)) {
 								List<String> infos = PACDonjons.donjonsFile.getStepInfo(donjon, step);
-								sender.sendMessage(Messages.success(String.format(Messages.STEP_INFO, step, donjon)).append(Component.text(infos.toString(), TextColor.color(0xFFAA00))));
+								Component infoText = Component.text(infos.toString(), TextColor.color(0xFFAA00));
+								if (sender instanceof Player player) {
+									infoText = infoText.hoverEvent(HoverEvent.showText(Component.text("Clique pour te téléporter")));
+									infoText = infoText.clickEvent(ClickEvent.runCommand("/minecraft:tp " + player.getName() + " " + infos.get(1) + " " + infos.get(2) + " " + infos.get(3)));
+								}
+								sender.sendMessage(Messages.success(String.format(Messages.STEP_INFO, step, donjon)).append(infoText));
 							} else {
 								sender.sendMessage(Messages.STEP_NOT_FOUND);
 							}
